@@ -1,0 +1,8 @@
+.widgets{
+    overflow:hidden;
+
+}
+
+.widgets::-webkit-scrollbar{
+    display: none;
+}

@@ -1,26 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Header from './Header.component';
+import SideBar from './SideBar.component';
+import Feed from './Feed.component';
+import Widgets from './Widgets.component';
+import Login from './Login.page';
+import {useDataLayerValue} from './DataLayer';
+
 
 function App() {
+
+  const [{user},dispatch] = useDataLayerValue();
+
   return (
+
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+        { !user ? (<Login/>) : 
+          (
+          <div>
+            <Header/>
+            <div className="app__body">
+            <SideBar/>
+            <Feed/>
+            <Widgets/>
+            </div>
+          </div>
+          )
+        }
+
     </div>
-  );
+
+    );
 }
 
 export default App;
